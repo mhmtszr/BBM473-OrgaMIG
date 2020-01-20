@@ -362,7 +362,7 @@ BEGIN
     UPDATE ShoppingCart
     SET amountOfProduct = IF(`updateAmountOfProduct` <> '', `updateAmountOfProduct`, amountOfProduct),
 		OrderID = IF(`updateOrderID` <> '', `updateOrderID`, OrderID)
-    WHERE CustomerID = `updateCustomerID` AND ProductID = `updateProductID`;
+    WHERE CustomerID = `updateCustomerID` AND ProductID = `updateProductID` AND OrderID = 0;
 end $$
 
 DELIMITER $$
@@ -482,7 +482,7 @@ CREATE PROCEDURE `delete_shopping_cart`
 )
 BEGIN
 	DELETE FROM `ShoppingCart`
-	WHERE CustomerID = `_CustomerID` AND ProductID = `_ProductID`;
+	WHERE CustomerID = `_CustomerID` AND ProductID = `_ProductID` AND OrderID = 0;
 
 END $$
 
